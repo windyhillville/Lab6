@@ -1,9 +1,19 @@
 # Ben Davidson
-
 def encode(password):
-    temp_list = [int(i) + 3 for i in password]
+    temp_list = [int(i) for i in password]
+
+    for index in range(len(temp_list)):
+        if temp_list[index] == 7:
+            temp_list[index] = 0
+        elif temp_list[index] == 8:
+            temp_list[index] = 1
+        elif temp_list[index] == 9:
+            temp_list[index] = 2
+        else:
+            temp_list[index] += 3
+
     temp_list = [str(i) for i in temp_list]
-    encoded_password = "".join(temp_list)
+    encoded_password = ''.join(temp_list)
 
     return encoded_password
 
