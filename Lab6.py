@@ -18,8 +18,15 @@ def encode(password):
     return encoded_password
 
 
-def decode(password):
-    pass
+def decode(enc):
+    new = []
+    for digit in enc:
+        digit = int(digit) - 3
+        if digit < 0:
+            digit += 10
+        new.append(str(digit))
+    decoded = ''.join(new)
+    return decoded
 
 
 def main():
@@ -37,9 +44,12 @@ def main():
             encoded_password = encode(password)
             print("Your password has been encoded and stored!\n")
         elif menu_choice == 2:
-            pass
-        else:
+            print(f"The encoded password is {encode(password)}, and the original password is {decode(encode(password))}.\n")
+
+        elif menu_choice == 3:
             break
+        else:
+            print("Invalid option, please try again")
 
 
 if __name__ == '__main__':
